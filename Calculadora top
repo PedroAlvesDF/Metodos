@@ -1,0 +1,171 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+void deriv(char j[100]){
+    int a = 0;
+    k[100];
+    a = strlen(j);
+    for(int i = 0; i<a; i++){
+        switch(j[i]){
+            case 'x':
+                return x;
+            break;
+            case '1':
+                z = 1;
+            break;
+            case '2':
+                z = 2;
+            break;
+            case '3':
+                z = 3;
+            break;
+            case '4':
+                z = 4;
+            break;
+            case '5':
+                z = 5;
+            break;
+            case '6':
+                z = 6;
+            break;
+            case '7':
+                z = 7;
+            break;
+            case '8':
+                z = 8;
+            break;
+            case '9':
+                z = 9;
+            break;
+            case '0':
+                z = 0;
+            break;
+            case '*':
+                
+            break;
+            case '-':
+            break;
+            case '+':
+            break;
+            case '/':
+            break;
+            case ' ':
+            break;
+            case '.':
+            break;
+            case '(':
+            break;
+            case ')':
+            break;
+        }
+    }
+    return;
+}
+double integ(char j[100], int a, int b){
+    return ;    
+}
+
+void bissec(char j[100], int a, int b){
+    return;
+}
+void secante(char j[100]){
+    
+}
+void newton(char j[100]){
+    
+}
+void lagrange(char j[100]){
+    
+}
+int main()
+{
+    char fun[100] = "\0";
+    int a = 0, b = 0;
+    double y = 0;
+    double z = 0;
+    
+    printf("Olá, bem vindo! O que deseja calcular?\n1 - Derivada\n2 - Integral Numérica\n3- Raiz por bissecção\n");
+    printf("4 - Raiz por secante\n5- Raiz por Newton\n6 - Polinômio de Lagrange\n");
+    scanf("%d", &b);
+    switch(b){
+        case 1:
+            printf("f(x) = ");
+            gets(fun);
+            deriv(fun);
+        break;
+        case 2:
+            int intervalo1, intervalo2;
+            printf("f(x) = ");
+            gets(fun);
+            printf("Intervalo inicial: ");
+            scanf("%d", intervalo1);
+            printf("Intervalo final: ");
+            scanf("%d", intervalo2);
+        break;
+        case 3:
+        break;
+        case 4:
+        break;
+        case 5:
+        break;
+    }
+    gets(fun);
+    double z = f(fun);
+    for(int i = 0; i<a; i++){
+        switch(fun[i]){
+            case 'x':
+                ;
+            break;
+            case '1':
+                z = 1;
+            break;
+            case '2':
+                z = 2;
+            break;
+            case '3':
+                z = 3;
+            break;
+            case '4':
+                z = 4;
+            break;
+            case '5':
+                z = 5;
+            break;
+            case '6':
+                z = 6;
+            break;
+            case '7':
+                z = 7;
+            break;
+            case '8':
+                z = 8;
+            break;
+            case '9':
+                z = 9;
+            break;
+            case '0':
+                z = 0;
+            break;
+            case '*':
+                
+            break;
+            case '-':
+            break;
+            case '+':
+            break;
+            case '/':
+            break;
+            case ' ':
+            break;
+            case '.':
+            break;
+            case '(':
+            break;
+            case ')':
+            break;
+        }
+    }
+
+    return 0;
+}
