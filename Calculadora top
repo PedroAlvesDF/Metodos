@@ -2,14 +2,25 @@
 #include <string.h>
 #include <math.h>
 
-void deriv(char j[100]){
-    int a = 0;
-    k[100];
-    a = strlen(j);
+double f(char j[100]){
+    int a = strlen(j);
+    double coef = 0;
+    int c = 0;
+    double z;
     for(int i = 0; i<a; i++){
+        if(j[i]>=48&&j[i]<=57){
+            c = i;
+            while(j[c]>=48&&j[c]<=57){
+                c++;
+            }
+            int b = 0;
+            for(;i<c;i++){
+                coef = (j[c]-48)*pow(10, c-i);
+            }
+            printf("%lf", coef);
+        }
         switch(j[i]){
             case 'x':
-                return x;
             break;
             case '1':
                 z = 1;
@@ -60,10 +71,31 @@ void deriv(char j[100]){
             break;
         }
     }
+    
+    return 0;
+}
+
+/*void deriv(char j[100]){
+    int a = 0;
+    char k[100];
+    double x = 0;
+    double z;
+    
     return;
 }
-double integ(char j[100], int a, int b){
-    return ;    
+double integ(char j[100], double a, double b){
+	int np = 10000;
+	double h = (b-a)/np;
+	double xk = a, xk1 = a+h;
+	double ff=0;
+	
+	for(int i = 0; i<np; i++){
+		ff += f(xk) + 4*f((xk+xk1)/2) + f(xk1);
+		xk = xk1;
+		xk1 += h;
+	}
+	ff = (h/6)*ff;
+    return ff;    
 }
 
 void bissec(char j[100], int a, int b){
@@ -78,41 +110,48 @@ void newton(char j[100]){
 void lagrange(char j[100]){
     
 }
+*/
 int main()
 {
     char fun[100] = "\0";
     int a = 0, b = 0;
     double y = 0;
     double z = 0;
+    double intervalo1, intervalo2;
+    double integral = 0;
     
     printf("Olá, bem vindo! O que deseja calcular?\n1 - Derivada\n2 - Integral Numérica\n3- Raiz por bissecção\n");
     printf("4 - Raiz por secante\n5- Raiz por Newton\n6 - Polinômio de Lagrange\n");
     scanf("%d", &b);
     switch(b){
-        case 1:
+        /*case 1:
             printf("f(x) = ");
-            gets(fun);
+            scanf("%s", fun);
             deriv(fun);
         break;
         case 2:
-            int intervalo1, intervalo2;
             printf("f(x) = ");
-            gets(fun);
+            scanf("%s", fun);
             printf("Intervalo inicial: ");
-            scanf("%d", intervalo1);
+            scanf("%lf", &intervalo1);
             printf("Intervalo final: ");
-            scanf("%d", intervalo2);
+            scanf("%lf", &intervalo2);
+            integral = integ(fun, intervalo1, intervalo2);
+            printf("%lf\n", integral);
         break;
         case 3:
         break;
         case 4:
         break;
         case 5:
+        break;*/
+        case 8:
+        scanf("%s", fun);
+        printf("%lf", f(fun));
         break;
     }
-    gets(fun);
-    double z = f(fun);
-    for(int i = 0; i<a; i++){
+        z = f(fun);
+    /*for(int i = 0; i<a; i++){
         switch(fun[i]){
             case 'x':
                 ;
@@ -165,7 +204,7 @@ int main()
             case ')':
             break;
         }
-    }
+    }*/
 
     return 0;
 }
