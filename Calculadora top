@@ -2,7 +2,7 @@
 #include <string.h>
 #include <math.h>
 
-double coef(char j[100]){
+double coeficiente(char j[100]){//acha o coeficiente que multiplica por x
     double a = 0, b = 0;
     int i = 0, d = 0, c = 0;
     
@@ -27,24 +27,24 @@ double coef(char j[100]){
     return a;
 }
 
-/* double f(char j[100]){
+double f1(char j[100]){
     int a = strlen(j);
     double coef = 0;
     int c = 0;
+    char s[100];
     double z;
     for(int i = 0; i<a; i++){
-        if(j[i]>=48&&j[i]<=57){
+        if(j[i]>=48&&j[i]<=57||j[i]=='.'){
             c = i;
-            while(j[c]>=48&&j[c]<=57){
+            while(j[c]>=48&&j[c]<=57||j[i]=='.'){
                 c++;
             }
-            int b = 0;
-            for(;i<c;i++){
-                coef = (j[c]-48)*pow(10, c-i);
+            for(int k = 0;i<c;i++, k++){
+                s[k] = j[i];
             }
-            printf("%lf", coef);
+            coef = coeficiente(s);
         }
-        switch(j[i]){
+        /*switch(j[i]){
             case 'x':
             break;
             case '1':
@@ -95,11 +95,12 @@ double coef(char j[100]){
             case ')':
             break;
         }
-    }
+    }*/
     
-    return 0;
+    return coef;
 }
 
+/*
 void deriv(char j[100]){
     int a = 0;
     char k[100];
@@ -107,6 +108,10 @@ void deriv(char j[100]){
     double z;
     
     return;
+}
+*/
+double f(double x){
+    return f1(fun);
 }
 double integ(char j[100], double a, double b){
 	int np = 10000;
@@ -122,7 +127,7 @@ double integ(char j[100], double a, double b){
 	ff = (h/6)*ff;
     return ff;    
 }
-
+/*
 void bissec(char j[100], int a, int b){
     return;
 }
