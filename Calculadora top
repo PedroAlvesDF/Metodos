@@ -2,7 +2,32 @@
 #include <string.h>
 #include <math.h>
 
-double f(char j[100]){
+double coef(char j[100]){
+    double a = 0, b = 0;
+    int i = 0, d = 0, c = 0;
+    
+    while(j[i]>='0'&&j[i]<='9'){
+        i++;
+    }
+    if(j[i] == '.'){
+        c=i;
+        c++;
+        while(j[c]!= '\0'){
+            d++;
+            c++;
+        }
+    }
+    for(int c = 0; c<i; c++){
+        a += (j[c]-'0')*pow(10, i-c-1);
+    }
+    for(int c = i+1; c<=d+i; c++){
+        b+= (j[c]-'0')*pow(10, i-c);
+    }
+    a += b;
+    return a;
+}
+
+/* double f(char j[100]){
     int a = strlen(j);
     double coef = 0;
     int c = 0;
@@ -75,7 +100,7 @@ double f(char j[100]){
     return 0;
 }
 
-/*void deriv(char j[100]){
+void deriv(char j[100]){
     int a = 0;
     char k[100];
     double x = 0;
