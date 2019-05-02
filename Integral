@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <math.h>
+
+double f(double x){
+	return sqrt(2-2*cos(x));
+}
+
+int main(){
+	double a= 0, b = 3.141592;
+	int np = 99900000;
+	double h = (b-a)/np;
+	double xk = a, xk1 = a+h;
+	double ff=0;
+	
+	for(int i = 0; i<np; i++){
+		ff += f(xk) + 4*f((xk+xk1)/2) + f(xk1);
+		xk = xk1;
+		xk1 += h;
+	}
+	ff = (h/6)*ff;
+	printf("\n\nSum = %.15lf\n\n", ff);
+	
+	return 0;
+}
