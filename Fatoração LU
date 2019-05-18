@@ -13,12 +13,11 @@ int main()
         }
     }
     for(int diag = 0; (diag<tam1)&&(diag<tam2); diag++){
-        u[diag][diag] = 1;
+        l[diag][diag] = 1;
         for(int i = diag; i<tam1; i++){
             if(u[diag][diag] != 0 && u[i+1][diag] != 0){
                 x = u[i+1][diag]/u[diag][diag];
                 l[i+1][diag] = x;
-                printf("x = %lf\n", x);
             }
             for(int j = 0; j<tam2; j++){
                 u[i+1][j] = u[i+1][j] - x*u[diag][j];
