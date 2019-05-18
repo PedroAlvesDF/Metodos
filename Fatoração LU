@@ -6,7 +6,9 @@ int main()
     int tam1 = 0, tam2 = 0;
     double x = 0;
     
+    printf("Insira o tamanho mxn de sua matriz: \n");
     scanf("%d %d", &tam1, &tam2);
+    printf("Insira os elementos de sua matriz: \n");
     for(int i = 0; i<tam1; i++){
         for(int j = 0; j<tam2; j++){
             scanf("%lf", &u[i][j]);
