@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main()
+{
+    double l[100][100] = {{},{}}, u[100][100] = {{}, {}};
+    int tam1 = 0, tam2 = 0;
+    double x = 0;
+    
+    scanf("%d %d", &tam1, &tam2);
+    for(int i = 0; i<tam1; i++){
+        for(int j = 0; j<tam2; j++){
+            scanf("%lf", &u[i][j]);
+        }
+    }
+    for(int diag = 0; (diag<tam1)&&(diag<tam2); diag++){
+        u[diag][diag] = 1;
+        for(int i = diag; i<tam1; i++){
+            if(u[diag][diag] != 0 && u[i+1][diag] != 0){
+                x = u[i+1][diag]/u[diag][diag];
+                l[i+1][diag] = x;
+                printf("x = %lf\n", x);
+            }
+            for(int j = 0; j<tam2; j++){
+                u[i+1][j] = u[i+1][j] - x*u[diag][j];
+            }
+        }    
+    }
+    
+    printf("Matriz U:\n\n\n");
+    for(int i = 0; i<tam1; i++){
+        for(int j = 0; j<tam2; j++){
+            printf("%lf", u[i][j]);
+            if(j+1 != tam2){
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+    printf("Matriz L:\n\n\n");
+    for(int i = 0; i<tam1; i++){
+        for(int j = 0; j<tam2; j++){
+            printf("%lf", l[i][j]);
+            if(j+1 != tam2){
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
