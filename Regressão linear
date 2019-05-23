@@ -1,42 +1,44 @@
 #include <stdio.h>
 
 int main(){
-int x[100] = {}, y[100] = {}, n, sumx = 0, sumy = 0;
-double c1, c2, k,  u11 = 0, prodx = 0, a[100][100] = {{}, {}};
+    int x[100] = {}, y[100] = {}, n, sumx = 0, sumy = 0;
+    double c1, c2, k,  u11 = 0, prodx = 0, a[100][100] = {{}, {}};
 
-printf("Número de pontos\n");
-scanf("%d", &n);
+    printf("Número de pontos\n");
+    scanf("%d", &n);
 
-printf("Insira X e Y\n");
-for(int i = 0; i<n; i++){
-scanf("%d %d", &x[i], &y[i]);
-sumx += x[i];
-sumy += y[i];
-u11 = u11 + x[i]*y[i];
-prodx += x[i]*x[i];
-
-}
-for(int i = 0; i<2; i++){
-for(int j = 0; j<2; j++){
-if(i == 0 && j == 0){
-a[i][j] = n;
-}
-else if((i == 0 && j == 1)||(i==1 && j == 0)){
-a[i][j] = sumx;
-}
-else{
-a[i][j] = prodx;
-}
-}
-}
-for(int diag = 0; diag<2; diag++){
+    printf("Insira X e Y\n");
+    
+    for(int i = 0; i<n; i++){
+        scanf("%d %d", &x[i], &y[i]);
+        sumx += x[i];
+        sumy += y[i];
+        u11 = u11 + x[i]*y[i];
+        prodx += x[i]*x[i];
+    }
+    
+    for(int i = 0; i<2; i++){
+        for(int j = 0; j<2; j++){
+            if(i == 0 && j == 0){
+                a[i][j] = n;
+            }
+            else if((i == 0 && j == 1)||(i==1 && j == 0)){
+                a[i][j] = sumx;
+            }
+            else{
+                a[i][j] = prodx;
+            }
+        }
+    }
+    
+    for(int diag = 0; diag<2; diag++){
         for(int i = diag; i<2; i++){
             if(a[diag][diag] != 0 && a[i+1][diag] != 0){
                 k = a[i+1][diag]/a[diag][diag];
           
-            for(int j = 0; j<2; j++){
-               	a[i+1][j] = a[i+1][j] - k*a[diag][j];
-            }
+                for(int j = 0; j<2; j++){
+                	a[i+1][j] = a[i+1][j] - k*a[diag][j];
+                }
             }
         }    
     }
@@ -46,8 +48,9 @@ for(int diag = 0; diag<2; diag++){
     
     if(c1!= 0)  printf("%lf ", c1);
     if(c2>0){
-    printf("+ ");
+        printf("+ ");
     }
-printf("%lfx\n\n", c2);
-return 0;
+    printf("%lfx\n\n", c2);
+    
+    return 0;
 }
