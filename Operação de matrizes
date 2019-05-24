@@ -3,9 +3,9 @@
 int main()
 {
     int d = 0;
-    double a[10][10] = {{}, {}}, b[10][10] = {{}, {}}, c[10][10] = {{}, {}};
+    double a[100][100] = {{}, {}}, b[10][10] = {{}, {}}, c[10][10] = {{}, {}};
     int am, an, bm, bn;
-    double l[100][100] = {{},{}}, u[100][100] = {{}, {}};
+    double l[100][100] = {{},{}};
     int tam1 = 0, tam2 = 0;
     double k = 0;
     int x[100] = {}, y[100] = {}, n, sumx = 0, sumy = 0;
@@ -59,18 +59,18 @@ int main()
             printf("Insira os elementos de sua matriz: \n");
             for(int i = 0; i<tam1; i++){
                 for(int j = 0; j<tam2; j++){
-                    scanf("%lf", &u[i][j]);
+                    scanf("%lf", &a[i][j]);
                 }
             }
             for(int diag = 0; (diag<tam1)&&(diag<tam2); diag++){
                 l[diag][diag] = 1;
                 for(int i = diag; i<tam1; i++){
-                    if(u[diag][diag] != 0 && u[i+1][diag] != 0){
-                        k = u[i+1][diag]/u[diag][diag];
+                    if(a[diag][diag] != 0 && a[i+1][diag] != 0){
+                        k = a[i+1][diag]/a[diag][diag];
                         l[i+1][diag] = k;
                     }
                     for(int j = 0; j<tam2; j++){
-                        u[i+1][j] = u[i+1][j] - k*u[diag][j];
+                        a[i+1][j] = a[i+1][j] - k*a[diag][j];
                     }
                 }    
             }
@@ -78,7 +78,7 @@ int main()
             printf("Matriz U:\n\n\n");
             for(int i = 0; i<tam1; i++){
                 for(int j = 0; j<tam2; j++){
-                    printf("%lf", u[i][j]);
+                    printf("%lf", a[i][j]);
                     if(j+1 != tam2){
                         printf(" ");
                     }
@@ -98,47 +98,32 @@ int main()
             break;
         case 3:
             
-        printf("Número de pontos\n");
-        scanf("%d", &n);
+            printf("Número de pontos\n");
+            scanf("%d", &n);
+            printf("Insira X e Y\n");
+            for(int i = 0; i<n; i++){
+                scanf("%d %d", &x[i], &y[i]);
+                a[0][0] = n;
+                a[0][1] += x[i];
+                a[1][0] = n;
+                a[1][1] += x[i]*x[i];
+                a[0][2] += y[i];
+                a[1][2] += x[i]*y[i];
+            }
+    
+            for(int diag = 0; diag<2; diag++){
+                for(int i = diag; i<2; i++){
+                    if(a[diag][diag] != 0 && a[i+1][diag] != 0){
+                        k = a[i+1][diag]/a[diag][diag];
+                        for(int j = 0; j<3; j++){
+                	    a[i+1][j] = a[i+1][j] - k*a[diag][j];
+                        }
+                    }
+                }    
+            }
 
-        printf("Insira X e Y\n");
-    
-    for(int i = 0; i<n; i++){
-        scanf("%d %d", &x[i], &y[i]);
-        sumx += x[i];
-        sumy += y[i];
-        u11 = u11 + x[i]*y[i];
-        prodx += x[i]*x[i];
-    }
-    
-    for(int i = 0; i<2; i++){
-        for(int j = 0; j<2; j++){
-            if(i == 0 && j == 0){
-                a[i][j] = n;
-            }
-            else if((i == 0 && j == 1)||(i==1 && j == 0)){
-                a[i][j] = sumx;
-            }
-            else{
-                a[i][j] = prodx;
-            }
-        }
-    }
-    
-    for(int diag = 0; diag<2; diag++){
-        for(int i = diag; i<2; i++){
-            if(a[diag][diag] != 0 && a[i+1][diag] != 0){
-                k = a[i+1][diag]/a[diag][diag];
-          
-                for(int j = 0; j<2; j++){
-                	a[i+1][j] = a[i+1][j] - k*a[diag][j];
-                }
-            }
-        }    
-    }
-
-    c2 = (u11 - k*sumy)/a[1][1];
-    c1 = (sumy-a[0][1]*c2)/(a[0][0]);
+    c2 = a[1][2]/a[1][1];
+    c1 = (a[0][2]-a[0][1]*c2)/(a[0][0]);
     
     printf("y = ");
     if(c1!= 0)  printf("%lf ", c1);
@@ -149,7 +134,9 @@ int main()
             break;
         case 4:
     
+    printf("Número de pontos\n");
     scanf("%d", &n);
+    printf("Insira X e Y\n");
     for(int i = 0; i<n; i++){
         scanf("%lf %lf", &x[i], &y[i]);
         a[0][0] = n;
