@@ -7,10 +7,9 @@ int main()
     int am, an, bm, bn;
     double l[100][100] = {{},{}};
     int tam1 = 0, tam2 = 0;
-    double k = 0;
-    int x[100] = {}, y[100] = {}, n, sumx = 0, sumy = 0;
-    double c1, c2, u11 = 0, prodx = 0;
-    double g1, g2, g3, c3;
+    double k = 0, x[100] = {}, y[100] = {};
+    int n;
+    double c1, c2, c3;
     
     
     printf("Olá, bem vindo!\nO que deseja fazer?\n");
@@ -102,10 +101,10 @@ int main()
             scanf("%d", &n);
             printf("Insira X e Y\n");
             for(int i = 0; i<n; i++){
-                scanf("%d %d", &x[i], &y[i]);
+                scanf("%lf %lf", &x[i], &y[i]);
                 a[0][0] = n;
                 a[0][1] += x[i];
-                a[1][0] = n;
+                a[1][0] = a[0][1];
                 a[1][1] += x[i]*x[i];
                 a[0][2] += y[i];
                 a[1][2] += x[i]*y[i];
@@ -130,7 +129,7 @@ int main()
     if(c2>0){
         printf("+ ");
     }
-    printf("%lfx\n\n", c2);
+    printf("%.15lfx\n\n", c2);
             break;
         case 4:
     
