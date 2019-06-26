@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <math.h>
+
+//derivada = fx + fyf
+double f(double x, double y){
+   
+   return -y + x + 2;
+}
+double f1(double x, double y){
+   
+   return y - x - 1;
+}
+double f2(double x, double y){
+   
+   return -y + x + 1;
+}
+
+int main(){
+	
+	double x0, y0, h, a, b, y;
+	int N;
+	printf("Valor de X0\n");
+	scanf("%lf", &x0);
+	printf("Valor de Y0\n");
+	scanf("%lf", &y0);
+	printf("Valor de h\n");
+	scanf("%lf", &h);
+	printf("Limites de x\n");
+	scanf("%lf %lf", &a, &b);
+	N = (b-a)/h;
+		for(int i = 0; i<=N; i++){
+		y = y0 + h*f(x0, y0) + (h*h/2)*f1(x0, y0) + (h*h*h/6)*f2(x0, y0);
+		x0 += h;
+		y0 = y;
+		printf("X%d = %lf Y%d = %lf\n", i+1, x0, i+1, y0);
+	}
+   
+   //Método de Taylor
+   //Yn+1 = Yn + hfn + (h²/2)f'n + (h³/3!)f''n
+   
+   
+
+	return 0;
+}
